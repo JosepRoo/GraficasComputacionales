@@ -1,6 +1,10 @@
 #include <iostream>
 
-//Josep Romagosa Llorden A01374637
+/*********************************************************
+Materia: Gráficas Computacionales
+Fecha: 13 de Agosto del 2017
+Autor: A01374637 Josep Romagosa Llorden
+*********************************************************/
 
 int PerimetroRectangulo(int base, int altura);
 float AreaTriangulo(float base, float altura);
