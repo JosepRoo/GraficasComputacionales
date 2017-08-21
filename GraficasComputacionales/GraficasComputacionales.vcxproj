@@ -118,12 +118,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />
+    <ClInclude Include="InputFile.h" />
     <ClInclude Include="Rectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="InputFile.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Source1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Prueba.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
