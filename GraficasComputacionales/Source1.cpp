@@ -10,4 +10,5 @@ int main(int argc, char* argv[])
 	myFile.Read(filename);
 	std::string contents = myFile.GetContents();
 	std::cout << "Contents: " << contents << std::endl;
+	std::cin.get();
 }

@@ -1,2 +1,3 @@
-﻿Source1.obj : error LNK2005: ya se definió _main en Source.obj
-C:\Users\Josep Romagosa\source\repos\GraficasComputacionales\Debug\GraficasComputacionales.exe : fatal error LNK1169: se encontraron uno o más símbolos definidos simultáneamente
+﻿  Source1.cpp
+  GraficasComputacionales.vcxproj -> C:\Users\Josep Romagosa\source\repos\GraficasComputacionales\Debug\GraficasComputacionales.exe
+  GraficasComputacionales.vcxproj -> C:\Users\Josep Romagosa\source\repos\GraficasComputacionales\Debug\GraficasComputacionales.pdb (Partial PDB)

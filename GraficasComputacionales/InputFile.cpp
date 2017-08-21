@@ -12,7 +12,7 @@ Autor: A01374637 Josep Romagosa Llorden
 bool InputFile::Read(std::string filename) {
 	_contents = "";
 	std::ifstream file;
-	file.open("example.txt");
+	file.open(filename);
 	if (file.is_open())
 	{
 		std::string str;

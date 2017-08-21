@@ -23,7 +23,7 @@ void GameLoop() {
 	glutSwapBuffers();
 }
 
-int main(int argc, char* argv[]) {
+int pruebaTriangulo(int argc, char* argv[]) {
 	//Inicializar freeglut
 	//Crea ventana para poder dibujar
 	glutInit(&argc, argv);
