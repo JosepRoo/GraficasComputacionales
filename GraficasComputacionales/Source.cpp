@@ -1,8 +1,8 @@
-/*******************
+/*******
 Materia: Graficas Computacionales
 Fecha: 18 de septiembre de 2017
 Autor: A01374637 Josep Romagosa Llorden
-*******************/
+*******/
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <iostream>
@@ -63,10 +63,10 @@ void Initialize() {
 	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(306))), (float)glm::sin(glm::radians((float)(306)))));
 	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(306))) / 2.0f, (float)glm::sin(glm::radians((float)(306))) / 2.0f));
 	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(234))), (float)glm::sin(glm::radians((float)(234)))));
-	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(234))), (float)glm::sin(glm::radians((float)(234)))));
 	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(234))) / 2.0f, (float)glm::sin(glm::radians((float)(234))) / 2.0f));
 	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(162))), (float)glm::sin(glm::radians((float)(162)))));
 	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(162))) / 2.0f, (float)glm::sin(glm::radians((float)(162))) / 2.0f));
+	positions.push_back(glm::vec2(0.0f, 1.0f));
 	positions.push_back(glm::vec2(0.0f, 0.5f));
 	colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
 	colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
