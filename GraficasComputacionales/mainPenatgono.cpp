@@ -1,3 +1,8 @@
+/*******************
+Materia: Graficas Computacionales
+Fecha: 18 de septiembre de 2017
+Autor: A01376121 Luis Ricardo Gutiérrez
+*******************/
 /*#include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <iostream>
@@ -5,32 +10,34 @@
 #include <vector>
 #include "InputFile.h"
 
-// Identificador del manager al que vamos a asociar todos los VBOs
+
 GLuint vao;
-
-// Identifcador del manager de los shaders (shaderProgram)
 GLuint shaderProgram;
+void Initialize() {
 
-
-void Initialize()
-{
-	// Creando toda la memoria que el programa va a utilizar.
-
-	// Creación del atributo de posiciones de los vértices.
-	// Lista de vec2
-	// Claramente en el CPU y RAM
 	std::vector<glm::vec2> positions;
-	positions.push_back(glm::vec2(0.5f, -0.5f));
-	positions.push_back(glm::vec2(0.5f, 0.5f));
-	positions.push_back(glm::vec2(-0.5f, -0.5f));
-	positions.push_back(glm::vec2(-0.5f, 0.5f));
 	std::vector<glm::vec3> colors;
-	colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-	colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-	colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-	colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
 
+	positions.push_back(glm::vec2(0.0f, 1.0f));
+	positions.push_back(glm::vec2(0.0f, 0.5f));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(18))), (float)glm::sin(glm::radians((float)(18)))));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(18))) / 2.0f, (float)glm::sin(glm::radians((float)(18))) / 2.0f));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(306))), (float)glm::sin(glm::radians((float)(306)))));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(306))) / 2.0f, (float)glm::sin(glm::radians((float)(306))) / 2.0f));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(234))), (float)glm::sin(glm::radians((float)(234)))));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(234))) / 2.0f, (float)glm::sin(glm::radians((float)(234))) / 2.0f));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(162))), (float)glm::sin(glm::radians((float)(162)))));
+	positions.push_back(glm::vec2((float)glm::cos(glm::radians((float)(162))) / 2.0f, (float)glm::sin(glm::radians((float)(162))) / 2.0f));
+	positions.push_back(glm::vec2(0.0f, 1.0f));
+	positions.push_back(glm::vec2(0.0f, 0.5f));
+	for (int i = 0; i < 12; i++) {
+		colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
+	}
+
+	// Queremos generar 1 manager
 	glGenVertexArrays(1, &vao);
+	// Utilizar el vao. A partir de este momento, todos VBOs creados y configurados
+	// se van a asociar a este manager.
 	glBindVertexArray(vao);
 
 	// Identificador del VBO de posiciones.
@@ -58,7 +65,7 @@ void Initialize()
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	// Desactivamos el manager
+	// Desactivamos el manager del vao
 	glBindVertexArray(0);
 
 	// Creamos un objeto para leer archivos de texto
@@ -106,8 +113,6 @@ void Initialize()
 	// Ejecutamos el proceso de linker (asegurarnos que el vertex y fragment son
 	// compatibles)
 	glLinkProgram(shaderProgram);
-
-
 }
 
 void GameLoop()
@@ -116,16 +121,13 @@ void GameLoop()
 	// Siempre hacerlo al inicio del frame
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
 	// Activamos el vertex shader y el fragment shader utilizando el manager
 	glUseProgram(shaderProgram);
 	// Activamos el manager, en este momento se activan todos los
 	// VBOs asociados automáticamente.
 	glBindVertexArray(vao);
 	// Función de dibujado sin indices.
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 12);
 	// Terminamos de utilizar el manager
 	glBindVertexArray(0);
 	// Desactivamos el manager
@@ -135,18 +137,25 @@ void GameLoop()
 	glutSwapBuffers();
 }
 
-void Idle() {
-	glutPostRedisplay();
-}
-void ReshapeWindow(int width, int height) {
-	glViewport(0, 0, width, height);
-
-}
 int main(int argc, char* argv[])
 {
+	// Inicializar freeglut
+	// Freeglut se encarga de crear una ventana
+	// en donde podemos dibujar
 	glutInit(&argc, argv);
+	// Solicitando una versión específica de OpenGL.
+	glutInitContextVersion(4, 4);
+	// Iniciar el contexto de OpenGL. El contexto se refiere
+	// a las capacidades que va a tener nuestra aplicación
+	// gráfica.
+	// En este caso estamos trabajando con el pipeline programable.
 	glutInitContextProfile(GLUT_CORE_PROFILE);
+	// Freeglut nos permite configurar eventos que ocurren en la ventana.
+	// Un evento que nos interesa es cuando alguien cierra la ventana.
+	// En este caso, simplemente dejamos de renderear la esscena y terminamos el programa.
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+	// Configuramos el framebuffer. En este caso estamos solicitando un buffer
+	// true color RGBA, un buffer de profundidad y un segundo buffer para renderear.
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	// Iniciar las dimensiones de la ventana (en pixeles)
 	glutInitWindowSize(400, 400);
@@ -154,8 +163,7 @@ int main(int argc, char* argv[])
 	glutCreateWindow("Hello World GL");
 	// Asociamos una función de render. Esta función se mandará a llamar para dibujar un frame.
 	glutDisplayFunc(GameLoop);
-	//glutReshapeFunc(ReshapeWindow);
-	//glutIdleFunc(Idle);
+
 	// Inicializar GLEW. Esta librería se encarga de obtener el API de OpenGL de
 	// nuestra tarjeta de video. SHAME ON YOU MICROSOFT.
 	glewInit();
@@ -175,4 +183,3 @@ int main(int argc, char* argv[])
 
 	return 0;
 }*/
-

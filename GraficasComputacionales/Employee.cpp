@@ -1,46 +1,36 @@
-#include "Employee.h"
+#include "Employee.h";
 
-
-Employee::Employee(int id, std::string firstName, std::string lastName, int salary)
-{
+Employee::Employee(int id, std::string firstName, std::string lastName, int salary){
 	_id = id;
 	_firstName = firstName;
 	_lastName = lastName;
 	_salary = salary;
 }
-
-int Employee::getId() {
+int Employee::GetID(){
 	return _id;
 }
-
-std::string Employee::getFirstName() {
+std::string Employee::GetFirstname(){
 	return _firstName;
 }
-
-std::string Employee::getLastName() {
+std::string Employee::GetLastname(){
 	return _lastName;
 }
-
-std::string Employee::getName() {
-	return _firstName + " " + _lastName;
+std::string Employee::GetName(){
+	return _firstName+" "+_lastName;
 }
-
-int Employee::getSalary() {
+int Employee::GetSalary(){
 	return _salary;
 }
-
-void Employee::setSalary(int salary) {
+void Employee::setSalary(int salary){
 	_salary = salary;
 }
-
-int Employee::getAnnualSalary() {
-	return _salary * 12;
+int Employee::GetAnnualSalary(){
+	return _salary*12;
 }
-
-int Employee::raiseSalary(int percent) {
-	return _salary + _salary*percent;
+int Employee::RaiseSalary(int percent){
+	_salary = _salary * (1+(percent/100));
+	return _salary;
 }
-
-std::string Employee::print() {
-	return "Employee[" + std::to_string(_id) + ", name = " + _firstName + " " + _lastName + ", " + std::to_string(_salary)+"]";
+std::string Employee::Print(){
+	return "Employee["+std::to_string(_id)+", name="+_firstName+" "+_lastName+", "+std::to_string(_salary)+"]";
 }

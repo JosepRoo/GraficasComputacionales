@@ -3,7 +3,7 @@
 
 Camera::Camera() {
 	SetPerspective(1.0f, 1000.0f, 60.0f, 1.0f);
-	// Inversa de la matriz modelo de la c√°mara
+	// Inversa de la matriz modelo de la c·mara
 	_viewMatrix = inverse(_transform.GetModelMatrix());
 }
 

@@ -1,18 +1,18 @@
+#pragma once
 /*********************************************************
 Materia: Gráficas Computacionales
 Fecha: 21 de agosto del 2017
-Autor: A01374637 Josep Romagosa Llorden
+Autor: A01376121 Luis Ricardo Gutiérrez
 *********************************************************/
 
-#pragma once
 #include <string>
 
 class InputFile
 {
 public:
-	bool Read(std::string);
-	std::string GetContents();
+	bool Read(const std::string& filename);
+	const std::string GetContents() const;
+
 private:
 	std::string _contents;
 };
-
